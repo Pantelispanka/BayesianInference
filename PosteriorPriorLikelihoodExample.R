@@ -25,6 +25,12 @@ likelihood.normal.mu <- function(mu, sig2, x) {
      return(ans) 
  }
 
+
+#Finding the standard deviance of the posterior
+sqrt(153.8462)
+
+
+
 #Intitialize new empty array for the results of the likelihood
 likelihood_results <- c()
 
@@ -32,8 +38,8 @@ likelihood_results <- c()
 for (i in 1:length(x)){ likelihood_results[i] <- likelihood.normal.mu(mean(data), sig2=3600, x = x[i])}
 
 #Plotting Likelihood , Posterior, Prior
-plot(x, dtnorm(x,0,1000, 0 , 500), type = "l", ylim = c(0,0.01), col = "brown")
-lines(x, dtnorm(x,95.573,153.8462, 0 , 500), type = "l")
+plot(x, dtnorm(x,0,1000, 0 , 500), type = "l", ylim = c(0,0.04), col = "brown")
+lines(x, dtnorm(x,95.573,sqrt(153.8462), 0 , 500), type = "l")
 lines(x, likelihood_results, type = "l", col = "red")
 
 #Adding text for better visualization

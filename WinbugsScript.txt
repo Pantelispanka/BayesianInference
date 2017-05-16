@@ -1,0 +1,22 @@
+model  trun1;
+{
+
+#prior distribution
+mu~dnorm(0,0.001)I(0, 500)
+#var <- 1/prec
+
+var ~ dgamma(0.001, 0.001)
+
+#Likelihood
+for(i in 1:n) { y[i] ~ dnorm(mu,var) }
+
+
+}
+#Inits
+list(mu = 10, var = 1)
+
+#Data
+list( y = c(60,119,100,130,43,227,23,91,128,199,85,125,40,26,141,212,238,94,111,67),n=20)
+
+
+}
